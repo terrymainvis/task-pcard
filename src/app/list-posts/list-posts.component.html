@@ -1,0 +1,28 @@
+<mat-form-field appearance="fill" style="width: 100%">
+  <mat-label>Search post</mat-label>
+  <input matInput type="text" [(ngModel)]="filterTerm" (keyup)="filterChange()">
+  <button *ngIf="!!filterTerm?.length" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-spinner *ngIf="isLoading" class="loader"></mat-spinner>
+
+<perfect-scrollbar [scrollIndicators]="true">
+  <mat-expansion-panel *ngFor="let post of posts"
+                       [expanded]="getTogglePosition(post.id)"
+                       (opened)="handleExpandedPost(post.id, ADD_EXPANDED_POST)"
+                       (closed)="handleExpandedPost(post.id, REMOVE_EXPANDED_POST)" >
+    <mat-expansion-panel-header>
+      <mat-panel-title class="title">
+        {{post.title}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p class="description">
+      {{post.body}}
+    </p>
+    <a [routerLink]="['/posts', post.id]" class="url-post">Go to post page</a>
+  </mat-expansion-panel>
+</perfect-scrollbar>
+
+

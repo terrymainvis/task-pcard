@@ -1,0 +1,28 @@
+@import "src/styles";
+
+.loader {
+  top: calc(50% - 100px);
+  position: relative;
+  margin: 0 auto;
+}
+
+.url-post {
+  color: #2196f3;
+  cursor: pointer;
+  font-family: 'Roboto-Medium', sans-serif;
+
+  &:hover {
+    color: #0069c0;
+  }
+}
+
+.title{
+  @extend .base-text;
+  font-weight: 500;
+  color: rgba(0, 0, 0, .87)
+}
+
+.description{
+  @extend .base-text;
+  color: rgba(0, 0, 0, .54);
+}
